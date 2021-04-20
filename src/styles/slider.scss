@@ -1,0 +1,112 @@
+.slider {
+  overflow: hidden;
+  box-shadow: 5px 5px 10px 1px rgba(0,0,0, .5);
+  border-radius:5px;
+  .scontents{
+    position: relative;
+    z-index: 1;
+    .img{
+      width: 100%;
+      display: block;
+      height: 500px;
+      object-fit: cover;
+      border-radius:5px;
+      position: relative;
+    }
+    .info {
+      background: rgba($green, .5);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      max-width: 700px;
+      height: 100%;
+      padding: 2rem;
+
+      display: flex;
+      align-items: center;
+      border-radius:5px;
+
+      z-index: 2;
+
+
+      p {
+        font-size: 2.5rem;
+        font-weight: 500;
+        width: 100%;
+        color: white;
+        position: relative;
+      }
+    }
+    .in {
+      .img {
+        z-index: 2;
+        animation: right_img 2s ease;
+      }
+      .info {
+        animation: left_info 2s ease;
+        p {
+          animation: blur_letter 3s ease;
+        }
+      }
+    } 
+
+    .after .img {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      animation: right_after_img 2s ease;
+    }
+
+  }
+
+  // Mover imagen principal a la de derecha a izquirda
+  @keyframes right_img {
+    0% {
+      right: 0%;
+    }
+    100% {
+      right: 100%;
+    }
+  }
+
+  // Mover imagen secundaria a la de derecha a izquirda
+  @keyframes right_after_img {
+    0% {
+      right: -60%;
+    }
+    100% {
+      right: 0%;
+    }
+  }
+
+
+  // Mover contenedor de informacion de izquierda a derecha
+  @keyframes left_info {
+    0% {
+      left: 0%;
+    }
+    50% {
+      left: -100%;
+    }
+    100% {
+      left: 0%;
+    }
+  }
+
+  // Difuminar letras de informacion
+  @keyframes blur_letter {
+    0% {
+      // top: 0;
+      filter: blur(1px);
+    }
+    50% {
+      filter: blur(10px);
+      top: 1000px;
+    }
+    100% {
+      top: 0;
+      filter: blur(1px);
+    }
+  }
+
+}

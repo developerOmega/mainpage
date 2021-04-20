@@ -1,0 +1,49 @@
+$time: .3s;
+
+.button_cont {
+  display: grid;
+  justify-content: end;
+  position: relative;
+  z-index: 2;
+
+}
+.button_menu {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  div {
+    padding: 2px;
+    background: $green;
+    margin: 5px;
+    width: 30px;
+    border-radius: 4px;
+    transform: rotate(0);
+    transition: ease $time all;
+    position: relative;
+    top: 0px;
+  }
+  &:hover {
+    div {
+      transition: ease $time all;
+      background: $red;
+    }
+  }
+}
+
+.button_activate {
+  .b1{
+    transform: rotate(-45deg);
+    top: 8px;
+  }
+  .b2{
+    transform: rotate(45deg);
+  }
+
+  .b3 {
+    transform: rotate(45deg);
+    transform: difumination(0px);
+    top: -8px;
+    
+  }
+  
+}
