@@ -35,6 +35,33 @@ body {
   max-width: 1200px;
   margin: auto;
   padding: 1rem 0;
+  position: relative;
+}
+
+.main_right {
+  animation: right_main .9s ease;
+}
+
+.main_left {
+  animation: left_main .9s ease;
+}
+
+@keyframes right_main {
+  0%{
+    right: 0;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes left_main {
+  0%{
+    right: 100%;
+  }
+  100% {
+    right: 0%;
+  }
 }
 
 @import './menu.scss';

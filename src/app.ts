@@ -7,9 +7,10 @@ import data from './data';
 // Tags de menu y boton
 const container:any = document.querySelector('#menu');
 const button:any = document.querySelector('#button_menu');
+const mainTag:any = document.querySelector('#main');
 
 // Instancias de menu y boton
-const menu: Menu = new Menu(container);
+const menu: Menu = new Menu(container, mainTag);
 const buttonIns:Button = new Button(button)
 
 // Evento de boton para invocar el menu
