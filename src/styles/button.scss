@@ -47,3 +47,31 @@ $time: .3s;
   }
   
 }
+
+.btn {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem;
+  background: $gray;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  
+  box-shadow: 2px 2px 5px rgba($gray, .5);
+
+  &:hover {
+    background: rgba($gray, .9);
+  }
+}
+
+.b-red {
+  background: $red;
+  color: $white;
+  box-shadow: 2px 2px 10px rgba($red, .7);
+  &:hover {
+    background: rgba($red, .9)
+  }
+}

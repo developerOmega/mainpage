@@ -57,7 +57,10 @@ export default class Slider {
     const inSection:HTMLElement = this.createSection(this.__node.data.img, (html:HTMLElement) => {
       const infoDiv = document.createElement("div");
       infoDiv.className = 'info';
-      infoDiv.innerHTML = `<p> ${this.__node.data.description} </p>`;
+      infoDiv.innerHTML = `
+        <p> ${this.__node.data.description} </p>
+        <a class='${ this.__node.data.url == "" ? "btn b-red difum" : "btn b-red"}' href='${this.__node.data.url}'> Ver mas </a>
+      `;
       html.appendChild(infoDiv);
     });
     this.__html.appendChild(inSection);
@@ -73,6 +76,11 @@ export default class Slider {
       this.activateClass(inSection, "cont in");
       this.activateClass(afterSection, "cont after");
 
+      const url = <HTMLElement> inSection.children[1].children[1]; 
+      
+      // Difuminar url
+      this.activateClass(url, this.__node.back.data.url == "" ? "btn b-red difum" : "btn b-red difum blur");
+
       // Esperar dos segundos para remplazar imagen principal
       setTimeout(() => {
         // Remplazar imagen principal por la nueva imagen
@@ -83,6 +91,12 @@ export default class Slider {
         const description = inSection.children[1].children[0]; 
         description.innerHTML = this.__node.data.description;
         
+        // Cambiar url de slider
+        url.setAttribute('href', this.__node.data.url);
+
+        // Enfocar link si existe url
+        if(this.__node.data.url != "") { this.activateClass(url, "btn b-red focus"); }
+
         this.__html.removeChild(afterSection);
       }, 2000);
       
