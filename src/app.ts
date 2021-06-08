@@ -25,4 +25,4 @@ const sliderTag:any = document.querySelector('#slider');
  
 // Definir instancia de slider
 const slider:Slider = new Slider(sliderTag, data);
-slider.activeTransition(5000);
+slider.active(5000);
