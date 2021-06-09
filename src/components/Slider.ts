@@ -4,12 +4,14 @@ import DataFile from '../interfaces/DataFile';
 export default class Slider extends SliderComponent {
   protected url: HTMLElement;
   protected image: HTMLElement;
+  protected description: HTMLElement;
   
   constructor(html:HTMLElement, data:DataFile[]) {
     super(html, data);
 
     this.url = document.createElement('div');
     this.image = document.createElement('img');
+    this.description = document.createElement('div');
   }
 
   // Activar Slider
@@ -18,8 +20,11 @@ export default class Slider extends SliderComponent {
     
     // Activar transicion
     this.activeTransition(time, (inSection: HTMLElement, afterSection: HTMLElement) => {
-      this.url = <HTMLElement> inSection.children[1].children[1]; 
       
+      this.url = <HTMLElement> inSection.children[1].children[1]; 
+      this.image = <HTMLElement> inSection.children[0];
+      this.description = <HTMLElement> inSection.children[1].children[0];  
+
       // Difuminar url
       this.activateClass(this.url, this.__node.back.data.url == "" ? "btn b-red difum" : "btn b-red difum blur");
 
@@ -36,12 +41,10 @@ export default class Slider extends SliderComponent {
   // Recibe parametros: inSection: HTMLelemment (Tag de slider principal),afterSection: HTMLelement (Tag secundario se slider) 
   protected changeData(inSection: HTMLElement, afterSection: HTMLElement) {
     // Remplazar imagen principal por la nueva imagen
-    const image = inSection.children[0]; 
-    image.setAttribute('src', this.__node.data.img);
+    this.image.setAttribute('src', this.__node.data.img);
    
     // Cambiar descripcion de imagen de slider
-    const description = inSection.children[1].children[0]; 
-    description.innerHTML = this.__node.data.description;
+    this.description.innerHTML = this.__node.data.description;
            
     // Cambiar url de slider
     this.url.setAttribute('href', this.__node.data.url);
